@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if title %}{{ title }} | {% endif %}{{ site.name }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <meta name="robots" content="noindex">
+  <link rel="preload" href="/fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/structure.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="wordmark" href="/">M. Almeria</a>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="/#work"{% if page.url and page.url.startsWith("/work/") %} aria-current="true"{% endif %}>Work</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="mailto:{{ site.email }}">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="grid-toggle" type="button" aria-pressed="false">Show structure</button>
+    </div>
+  </header>
+
+  <main id="main">
+    {{ content | safe }}
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap footer-grid">
+      <p class="footer-note">Let's help each other.</p>
+      <ul class="footer-links">
+        <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        {% for l in site.links %}<li><a href="{{ l.url }}">{{ l.label }}</a></li>{% endfor %}
+      </ul>
+      <p class="meta">Built by hand with Eleventy. Hosted on GitHub Pages.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "Matthew Almeria",
+  "role": "Brand designer and creative technologist",
+  "description": "Matthew Almeria designs brands and builds the systems that keep creative work running.",
+  "email": "matt.almeria@gmail.com",
+  "links": [
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/matthew-almeria/" },
+    { "label": "Behance", "url": "https://www.behance.net/avocadotoast3" },
+    { "label": "Instagram", "url": "https://www.instagram.com/design.raiine/" }
+  ]
+}

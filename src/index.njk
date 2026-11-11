@@ -1,0 +1,52 @@
+---
+layout: base.njk
+---
+<section class="hero surface-dark">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <p class="meta" data-spec="kicker / mono 13">{{ site.role }}</p>
+      <h1 class="display" data-spec="h1 / Anton">Matthew<br>Almeria</h1>
+      <p class="sticker" aria-hidden="true">brand + systems</p>
+      <p class="lede" data-spec="lede / Inter Tight 22">Full of brightness despite the dark clothes.</p>
+      <p class="hero-body">I design brands and build the systems that keep creative work running: the pipelines, templates and guidelines that let a small team do big work.</p>
+    </div>
+    <figure class="hero-photo" data-spec="photo / 4:5">
+      {% image "portrait.jpg", "Matthew sitting on the ledge of a tall window in an old brick building, dressed in black and wearing a gas mask.", "(min-width: 900px) 40vw, 100vw", "", "eager" %}
+    </figure>
+  </div>
+</section>
+
+<section class="surface-light" id="work" aria-labelledby="work-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="work-title" class="section-title">Selected work</h2>
+      <p class="meta">{{ collections.work.length }} projects</p>
+    </div>
+    <ol class="index" role="list">
+      {% for p in collections.work %}
+      <li class="index-row{% if p.data.draft %} is-draft{% endif %}">
+        <span class="meta index-no">{{ "0" if loop.index < 10 }}{{ loop.index }}</span>
+        {% if p.data.draft %}
+          <span class="index-title">{{ p.data.title }}</span>
+        {% else %}
+          <a class="index-title" href="{{ p.url }}">{{ p.data.title }}</a>
+        {% endif %}
+        <span class="meta index-type">{{ p.data.type }}</span>
+        <span class="meta index-role">{% if p.data.draft %}<span class="tag">in progress</span>{% else %}{{ p.data.role }}{% endif %}</span>
+        <span class="index-thumb" aria-hidden="true">{% image p.data.cover, "", "240px" %}</span>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="surface-dark about" id="about" aria-labelledby="about-title">
+  <div class="wrap about-grid">
+    <h2 id="about-title" class="section-title">About</h2>
+    <div class="about-body">
+      <p>I got into art out of rebellion. As a kid, I was always doodling in class and getting in trouble for it. I never really stopped.</p>
+      <p>Since then I've worked as a graphic designer, art director, production artist and digital marketer. I took a break to teach English in South Korea, found a second family in the alternative scene there, and came back knowing who I am.</p>
+      <p>These days I care about two things at once: work that makes people feel something, and the structure that makes that work possible to repeat.</p>
+    </div>
+  </div>
+</section>

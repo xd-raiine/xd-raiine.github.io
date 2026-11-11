@@ -1,0 +1,42 @@
+---
+layout: base.njk
+---
+<article>
+  <header class="cs-head surface-dark">
+    <div class="wrap">
+      <p class="meta" data-spec="kicker">{{ type }}</p>
+      <h1 class="display cs-title" data-spec="h1 / Anton">{{ title }}</h1>
+      <p class="lede">{{ summary }}</p>
+    </div>
+  </header>
+
+  <section class="surface-light" aria-label="Project facts">
+    <div class="wrap">
+      <dl class="facts" data-spec="facts table">
+        {% for f in facts %}
+        <div class="fact"><dt class="meta">{{ f.label }}</dt><dd>{{ f.value }}</dd></div>
+        {% endfor %}
+      </dl>
+      <div class="cs-body">
+        {{ content | safe }}
+      </div>
+    </div>
+  </section>
+
+  {% if gallery %}
+  <section class="surface-light gallery" aria-label="Project images">
+    <div class="wrap">
+      {% for g in gallery %}
+      <figure class="fig">
+        {% image g.src, g.alt, "(min-width: 1200px) 1100px, 100vw" %}
+        <figcaption class="meta"><span>Fig. {{ loop.index }}</span> {{ g.caption }}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <nav class="surface-dark cs-next" aria-label="More work">
+    <div class="wrap"><a href="/#work" class="meta">Back to all work</a></div>
+  </nav>
+</article>
