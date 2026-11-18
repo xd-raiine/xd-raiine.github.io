@@ -6,4 +6,5 @@ role: Designer
 cover: covers/tabu.jpg
 draft: true
 permalink: false
+note: "this one's just album covers, case study notes?"
 ---

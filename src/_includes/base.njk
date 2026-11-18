@@ -8,10 +8,23 @@
   <meta name="robots" content="noindex">
   <link rel="preload" href="/fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/raiine-toggle.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/style.css">
-  <script src="/js/structure.js" defer></script>
+  <script>try { if (localStorage.getItem("mode") === "sketch") document.documentElement.classList.add("sketch"); } catch (e) {}</script>
+  <script src="/js/mode.js" defer></script>
+  <script src="/js/ledger.js" defer></script>
 </head>
 <body>
+  <svg class="defs" aria-hidden="true" width="0" height="0">
+    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="4"/></filter>
+    <filter id="spray" x="-10%" y="-20%" width="120%" height="150%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="4" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="6" result="b"/>
+      <feComponentTransfer in="b" result="o"><feFuncA type="linear" slope="0.4"/></feComponentTransfer>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="d"/></feMerge>
+    </filter>
+  </svg>
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="wrap header-row">
@@ -23,23 +36,79 @@
           <li><a href="mailto:{{ site.email }}">Contact</a></li>
         </ul>
       </nav>
-      <button class="grid-toggle" type="button" aria-pressed="false">Show structure</button>
     </div>
   </header>
+
+  {# FLAG: placeholder slots. Matthew fills in what he's currently into. #}
+  <aside class="popout into" tabindex="0" aria-labelledby="into-title">
+    <h2 id="into-title" class="into-title">currently into</h2>
+    <dl class="into-list">
+      <div><dt>On repeat</dt><dd class="blank">add a song or album</dd></div>
+      <div><dt>Reading</dt><dd class="blank">add a book or zine</dd></div>
+      <div><dt>Watching</dt><dd class="blank">add a show or film</dd></div>
+      <div><dt>On my desk</dt><dd class="blank">add a thing</dd></div>
+      <div><dt>Obsessed with</dt><dd class="blank">add a typeface, a place, anything</dd></div>
+    </dl>
+  </aside>
 
   <main id="main">
     {{ content | safe }}
   </main>
 
   <footer class="site-footer" id="contact">
+  <div class="doodles doodles-foot" aria-hidden="true">
+    <i class="ds c-teal" style="--d:url(/doodles/star-1.svg);top:8%;left:88%;width:60px;height:60px;--r:-15deg"></i>
+    <i class="ds c-pencil" style="--d:url(/doodles/zigzag-3.svg);top:4%;left:30%;width:150px;height:46px;--r:6deg"></i>
+  </div>
+  <div class="scraps-foot" aria-hidden="true">
+    <img class="scrap scrap-piece" src="/collage/piece-hello.jpg" alt="" width="810" height="600" loading="lazy" decoding="async">
+    <img class="scrap scrap-tag t1" src="/collage/tag-green.jpg" alt="" width="700" height="413" loading="lazy" decoding="async">
+    <img class="scrap scrap-tag t2" src="/collage/tag-red.jpg" alt="" width="700" height="440" loading="lazy" decoding="async">
+  </div>
     <div class="wrap footer-grid">
       <p class="footer-note">Let's help each other.</p>
+      <span class="stk stk-hi" aria-hidden="true">say hi &darr;</span>
       <ul class="footer-links">
         <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
         {% for l in site.links %}<li><a href="{{ l.url }}">{{ l.label }}</a></li>{% endfor %}
       </ul>
       <p class="meta">Built by hand with Eleventy. Hosted on GitHub Pages.</p>
     </div>
+    <aside class="spec-sheet" aria-labelledby="spec-title">
+      <h2 id="spec-title" class="note n-pen spec-title ar-after" style="--arrow:url(/doodles/arrow-ball.svg);--ar:-14deg">the rules i keep breaking</h2>
+      <div class="spec-card">
+        <img class="spec-photo" src="/collage/rules-board.jpg" alt="" width="420" height="670" loading="lazy" decoding="async">
+        <div class="spec-grid">
+        <div>
+          <h3>Colour</h3>
+          <ul>
+            <li><span class="swatch" style="background:#0d0d0d"></span>Ink #0D0D0D / ground, about 70%</li>
+            <li><span class="swatch" style="background:#00e0d6"></span>Turquoise #00E0D6 / structure, about 20%</li>
+            <li><span class="swatch" style="background:#e10600"></span>Red #E10600 / sparks, about 10%</li>
+            <li><span class="swatch" style="background:#e8e5de"></span>Text #E8E5DE / 15.5:1 on ink</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Type</h3>
+          <ul>
+            <li>Display / Anton / 64 to 168px</li>
+            <li>Text / Inter Tight / 17px, 1.65</li>
+            <li>Labels / JetBrains Mono / 14px</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Grid</h3>
+          <ul>
+            <li>12 columns / 24px gap</li>
+            <li>1200px max / 16 to 40px gutter</li>
+            <li>All text pairs pass WCAG AA</li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </aside>
   </footer>
+
+  <button class="mode-toggle" type="button" hidden><span>see how I think</span></button>
 </body>
 </html>

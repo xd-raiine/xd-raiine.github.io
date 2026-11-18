@@ -5,6 +5,7 @@ type: Brand identity
 role: Lead designer, art director
 cover: covers/sober-attraction.png
 summary: A brand for a new app supporting people in addiction recovery. Warm and human, built around love and connection instead of labels.
+headNote: case study 1 of 5. the other four are coming
 facts:
   - label: Role
     value: "Lead designer and art director"
@@ -20,12 +21,15 @@ gallery:
   - src: sober-attraction/01-logo.png
     alt: The Sober Attraction logo mark, a pale green heart drawn as a single loop, glowing on a black background.
     caption: The final logo mark.
+    stamp: Final
   - src: sober-attraction/02-sketches.png
     alt: A sheet of pencil sketches exploring hearts, water drops and the letter S as logo ideas.
     caption: Early sketches exploring hearts and the letter S.
+    note: show more of these
   - src: sober-attraction/03-feedback.png
     alt: A presentation slide titled Option 1 team feedback, with logo drafts and handwritten-style notes on what worked.
     caption: Team feedback on the first direction.
+    note: real feedback, round one
   - src: sober-attraction/04-directions.png
     alt: Six slides in a grid showing three creative directions, each with a mood board and a logo proposal.
     caption: Three directions, each with a mood and a proposal.

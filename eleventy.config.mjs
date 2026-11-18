@@ -1,7 +1,7 @@
 import Image from "@11ty/eleventy-img";
 
 export default function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy({ "src/css": "css", "src/js": "js" });
+  eleventyConfig.addPassthroughCopy({ "src/css": "css", "src/js": "js", "src/fonts": "fonts", "src/assets/doodles": "doodles", "src/assets/collage": "collage" });
   eleventyConfig.addPassthroughCopy({
     "node_modules/@fontsource/anton/files/anton-latin-400-normal.woff2": "fonts/anton.woff2",
     "node_modules/@fontsource-variable/inter-tight/files/inter-tight-latin-wght-normal.woff2": "fonts/inter-tight.woff2",

@@ -2,45 +2,115 @@
 layout: base.njk
 ---
 <section class="hero surface-dark">
+  <div class="doodles" aria-hidden="true">
+    <i class="ds c-red" style="--d:url(/doodles/star-scribble.svg);top:5%;left:45%;width:58px;height:58px;--r:10deg"></i>
+    <i class="ds c-teal" style="--d:url(/doodles/zigzag-2.svg);top:88%;left:2%;width:130px;height:52px;--r:-6deg"></i>
+    <i class="ds c-ink" style="--d:url(/doodles/xx.svg);top:63%;left:44%;width:42px;height:42px;--r:-12deg"></i>
+  </div>
   <div class="wrap hero-grid">
     <div class="hero-text">
-      <p class="meta" data-spec="kicker / mono 13">{{ site.role }}</p>
-      <h1 class="display" data-spec="h1 / Anton">Matthew<br>Almeria</h1>
+      <p class="meta">{{ site.role }}</p>
+      {# FLAG: placeholder. Matthew will replace this "Hello my name is" sticker with a designed composition. #}
+      <h1 class="display name-tag"><span class="nt-hello" aria-hidden="true">Hello<small>my name is</small></span><span class="nt-name">Matthew<br>Almeria</span></h1>
       <p class="sticker" aria-hidden="true">brand + systems</p>
-      <p class="lede" data-spec="lede / Inter Tight 22">Full of brightness despite the dark clothes.</p>
+      <figure class="lede-quote">
+        <blockquote class="lede"><p>&ldquo;Creative, thoughtful, and disarming in a way that makes people comfortable thinking out loud around him.&rdquo;</p></blockquote>
+        <figcaption class="meta">Dariya O., data analyst at Furniture Bank</figcaption>
+      </figure>
+      <p class="note n-pen note-quote" style="--arrow:url(/doodles/arrow-loop-down.svg);--ar:-8deg">probably better for a review instead of boring linkedin crap</p>
       <p class="hero-body">I design brands and build the systems that keep creative work running: the pipelines, templates and guidelines that let a small team do big work.</p>
+      <p class="note n-postit note-body">ask Michelle if this makes sense</p>
     </div>
-    <figure class="hero-photo" data-spec="photo / 4:5">
-      {% image "portrait.jpg", "Matthew sitting on the ledge of a tall window in an old brick building, dressed in black and wearing a gas mask.", "(min-width: 900px) 40vw, 100vw", "", "eager" %}
+    <figure class="hero-photo">
+      <span class="photo-final">{% image "hero-neon-turquoise-lean.jpg", "Matthew in a dark alley lit by red and teal neon, a flag tied around his shoulders like a cape, looking up.", "(min-width: 900px) 40vw, 100vw", "print", "eager" %}<img class="photo-cut" src="/collage/hero-cutout-sm.webp" srcset="/collage/hero-cutout-sm.webp 417w, /collage/hero-cutout.webp 834w" sizes="(min-width: 900px) 18vw, 46vw" width="834" height="1710" alt="" loading="lazy" decoding="async"></span>
+      <p class="note n-pen note-me" aria-hidden="true" style="--arrow:url(/doodles/arrow-long.svg);--ar:62deg">me</p>
+      <i class="ds c-red photo-star" aria-hidden="true" style="--d:url(/doodles/star-2.svg)"></i>
+      <p class="note n-pen note-photo" style="--arrow:url(/doodles/arrow-bold-down.svg);--ar:14deg">1:45 am. cut myself out so I pop off the page</p>
     </figure>
   </div>
 </section>
 
 <section class="surface-light" id="work" aria-labelledby="work-title">
+  <div class="doodles" aria-hidden="true">
+    <i class="ds c-pencil" style="--d:url(/doodles/arc.svg);top:3%;left:70%;width:150px;height:60px;--r:-4deg"></i>
+    <i class="ds c-red" style="--d:url(/doodles/star-3.svg);top:60%;left:1%;width:46px;height:46px;--r:-10deg"></i>
+    <i class="ds c-teal" style="--d:url(/doodles/lines-1.svg);top:90%;left:8%;width:170px;height:40px;--r:-3deg"></i>
+  </div>
   <div class="wrap">
     <div class="section-head">
       <h2 id="work-title" class="section-title">Selected work</h2>
-      <p class="meta">{{ collections.work.length }} projects</p>
+      <p class="meta">{{ collections.work.length }} projects / sortable</p>
+      <p class="stk stk-warn" aria-hidden="true"><svg viewBox="0 0 24 22"><path d="M12 2 L23 21 H1 Z M12 9 V14 M12 17 V18"/></svg><span>Work in progress<small>1 of 5 case studies written</small></span></p>
+      <p class="note n-marker note-work ar-after" style="--arrow:url(/doodles/arrow-ball.svg);--ar:-10deg">should I add more variety? video ???</p>
     </div>
-    <ol class="index" role="list">
-      {% for p in collections.work %}
-      <li class="index-row{% if p.data.draft %} is-draft{% endif %}">
-        <span class="meta index-no">{{ "0" if loop.index < 10 }}{{ loop.index }}</span>
-        {% if p.data.draft %}
-          <span class="index-title">{{ p.data.title }}</span>
-        {% else %}
-          <a class="index-title" href="{{ p.url }}">{{ p.data.title }}</a>
-        {% endif %}
-        <span class="meta index-type">{{ p.data.type }}</span>
-        <span class="meta index-role">{% if p.data.draft %}<span class="tag">in progress</span>{% else %}{{ p.data.role }}{% endif %}</span>
-        <span class="index-thumb" aria-hidden="true">{% image p.data.cover, "", "240px" %}</span>
-      </li>
-      {% endfor %}
-    </ol>
+    <div class="ledger-sheet">
+    <table class="ledger">
+      <caption class="sr-only">All projects. Use the column buttons to sort.</caption>
+      <thead>
+        <tr>
+          <th scope="col" class="meta col-no" aria-sort="ascending"><button type="button" data-sort="no">No.</button></th>
+          <th scope="col" class="meta col-title"><button type="button" data-sort="title">Project</button></th>
+          <th scope="col" class="meta col-type"><button type="button" data-sort="type">Discipline</button></th>
+          <th scope="col" class="meta col-role"><button type="button" data-sort="role">Role</button></th>
+          <th scope="col" class="meta col-status"><button type="button" data-sort="status">Status</button></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in collections.work %}
+        {% set no = ("0" if loop.index < 10 else "") + loop.index %}
+        <tr class="{% if p.data.draft %}is-draft{% endif %}" data-no="{{ no }}" data-title="{{ p.data.title }}" data-type="{{ p.data.type }}" data-role="{{ p.data.role }}" data-status="{{ 'b' if p.data.draft else 'a' }}">
+          <td class="meta col-no">{{ no }}</td>
+          <td class="col-title">
+            {% if p.data.draft %}<span class="index-title">{{ p.data.title }}</span>{% else %}<a class="index-title" href="{{ p.url }}">{{ p.data.title }}</a>{% endif %}
+            <span class="meta ledger-sub">{{ p.data.type }}</span>
+            {% if not p.data.draft %}<span class="stk stk-star" aria-hidden="true">start here</span>{% endif %}
+            {% if p.data.note %}<span class="note n-pen note-row" style="--arrow:url(/doodles/arrow-hook-l.svg)">{{ p.data.note }}</span>{% endif %}
+            <span class="index-thumb" aria-hidden="true">{% image p.data.cover, "", "240px" %}</span>
+          </td>
+          <td class="meta col-type">{{ p.data.type }}</td>
+          <td class="meta col-role">{{ p.data.role }}</td>
+          <td class="meta col-status">{% if p.data.draft %}<span class="tag">in progress</span>{% else %}<span class="tag tag-live">case study</span>{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section class="surface-dark quotes" aria-labelledby="quotes-title">
+  <div class="doodles" aria-hidden="true">
+    <i class="ds c-red" style="--d:url(/doodles/heart-2.svg);top:8%;left:88%;width:62px;height:56px;--r:12deg"></i>
+    <i class="ds c-pencil" style="--d:url(/doodles/scribble.svg);top:72%;left:40%;width:120px;height:80px;--r:6deg"></i>
+  </div>
+  <div class="wrap">
+    <h2 id="quotes-title" class="sr-only">What people say</h2>
+    <p class="note n-label note-quotes">need to get more linkedin recs</p>
+    <a class="stk stk-seal" href="https://www.linkedin.com/in/matthew-almeria/details/recommendations/"><b>Real recs</b>read in full on LinkedIn</a>
+    <ul class="quote-row">
+      <li><figure>
+        <blockquote><p>&ldquo;The whole thing ended up feeling like a professional production.&rdquo;</p></blockquote>
+        <figcaption class="meta">Dariya O., on a quick IKEA video</figcaption>
+      </figure></li>
+      <li><figure>
+        <blockquote><p>&ldquo;Talented, humorous, and professional.&rdquo;</p></blockquote>
+        <figcaption class="meta">Michelle S., graphic designer, reported to me</figcaption>
+      </figure></li>
+      <li><figure>
+        <blockquote><p>&ldquo;He checks facts, links, and UTMs before anything ships.&rdquo;</p></blockquote>
+        <figcaption class="meta">Jarrell G., my manager at KourtLit</figcaption>
+      </figure></li>
+    </ul>
   </div>
 </section>
 
 <section class="surface-dark about" id="about" aria-labelledby="about-title">
+  <div class="doodles" aria-hidden="true">
+    <i class="ds c-ink" style="--d:url(/doodles/star-outline.svg);top:10%;left:88%;width:64px;height:64px;--r:8deg"></i>
+    <i class="ds c-pencil" style="--d:url(/doodles/arrow-swoosh.svg);top:70%;left:3%;width:90px;height:90px;--r:0deg"></i>
+    <i class="ds c-red" style="--d:url(/doodles/tick-lines.svg);top:82%;left:93%;width:50px;height:50px;--r:10deg"></i>
+  </div>
+  <figure class="scrap scrap-board" aria-hidden="true"><img src="/collage/intro-board.jpg" alt="" width="570" height="295" loading="lazy" decoding="async"></figure>
   <div class="wrap about-grid">
     <h2 id="about-title" class="section-title">About</h2>
     <div class="about-body">

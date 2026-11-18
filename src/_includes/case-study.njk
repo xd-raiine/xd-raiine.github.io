@@ -3,16 +3,25 @@ layout: base.njk
 ---
 <article>
   <header class="cs-head surface-dark">
+  <div class="doodles" aria-hidden="true">
+    <i class="ds c-red" style="--d:url(/doodles/heart-1.svg);top:14%;left:88%;width:66px;height:60px;--r:-10deg"></i>
+    <i class="ds c-ink" style="--d:url(/doodles/star-5.svg);top:70%;left:70%;width:40px;height:40px;--r:12deg"></i>
+  </div>
     <div class="wrap">
-      <p class="meta" data-spec="kicker">{{ type }}</p>
-      <h1 class="display cs-title" data-spec="h1 / Anton">{{ title }}</h1>
+      <p class="meta">{{ type }}</p>
+      <h1 class="display cs-title">{{ title }}</h1>
       <p class="lede">{{ summary }}</p>
+      {% if headNote %}<p class="note n-pen note-cs" style="--arrow:url(/doodles/arrow-loop-down.svg)">{{ headNote }}</p>{% endif %}
     </div>
   </header>
 
-  <section class="surface-light" aria-label="Project facts">
+  <section class="surface-light cs-main" aria-label="Project facts">
+  <div class="doodles" aria-hidden="true">
+    <i class="ds c-teal" style="--d:url(/doodles/star-outline.svg);top:58%;left:95%;width:56px;height:56px;--r:8deg"></i>
+    <i class="ds c-pencil" style="--d:url(/doodles/arrow-squiggle-2.svg);top:24%;left:1%;width:80px;height:80px;--r:-6deg"></i>
+  </div>
     <div class="wrap">
-      <dl class="facts" data-spec="facts table">
+      <dl class="facts">
         {% for f in facts %}
         <div class="fact"><dt class="meta">{{ f.label }}</dt><dd>{{ f.value }}</dd></div>
         {% endfor %}
@@ -28,8 +37,10 @@ layout: base.njk
     <div class="wrap">
       {% for g in gallery %}
       <figure class="fig">
+        {% if g.stamp %}<span class="stk stk-stamp" aria-hidden="true">{{ g.stamp }}</span>{% endif %}
+        <span class="tape" aria-hidden="true">Fig. {{ "0" if loop.index < 10 }}{{ loop.index }}</span>
         {% image g.src, g.alt, "(min-width: 1200px) 1100px, 100vw" %}
-        <figcaption class="meta"><span>Fig. {{ loop.index }}</span> {{ g.caption }}</figcaption>
+        <figcaption class="meta"><span>Fig. {{ loop.index }}</span> {{ g.caption }}{% if g.note %} <span class="note n-pen note-fig" style="--arrow:url(/doodles/arrow-squiggle-2.svg)">{{ g.note }}</span>{% endif %}</figcaption>
       </figure>
       {% endfor %}
     </div>
