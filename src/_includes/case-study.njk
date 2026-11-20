@@ -48,6 +48,11 @@ layout: base.njk
   {% endif %}
 
   <nav class="surface-dark cs-next" aria-label="More work">
-    <div class="wrap"><a href="/#work" class="meta">Back to all work</a></div>
+    {% set live = [] %}{% for p in collections.work %}{% if not p.data.draft %}{% set live = (live.push(p), live) %}{% endif %}{% endfor %}
+    {% set nextp = null %}{% for p in live %}{% if p.url == page.url %}{% set nextp = live[loop.index0 + 1] or live[0] %}{% endif %}{% endfor %}
+    <div class="wrap cs-next-row">
+      <a href="/#work" class="meta">Back to all work</a>
+      {% if nextp and nextp.url != page.url %}<a href="{{ nextp.url }}" class="cs-next-link"><span class="meta">Next project</span> <span class="cs-next-title">{{ nextp.data.title }}</span></a>{% endif %}
+    </div>
   </nav>
 </article>

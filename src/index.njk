@@ -63,7 +63,7 @@ layout: base.njk
           <td class="col-title">
             {% if p.data.draft %}<span class="index-title">{{ p.data.title }}</span>{% else %}<a class="index-title" href="{{ p.url }}">{{ p.data.title }}</a>{% endif %}
             <span class="meta ledger-sub">{{ p.data.type }}</span>
-            {% if not p.data.draft %}<span class="stk stk-star" aria-hidden="true">start here</span>{% endif %}
+            {% if loop.first and not p.data.draft %}<span class="stk stk-star" aria-hidden="true">start here</span>{% endif %}
             {% if p.data.note %}<span class="note n-pen note-row" style="--arrow:url(/doodles/arrow-hook-l.svg)">{{ p.data.note }}</span>{% endif %}
             <span class="index-thumb" aria-hidden="true">{% image p.data.cover, "", "240px" %}</span>
           </td>

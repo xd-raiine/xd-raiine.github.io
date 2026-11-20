@@ -176,6 +176,10 @@ a.index-title::after { content: ""; position: absolute; inset: 0; }
 .fig figcaption { display: flex; gap: 12px; padding-top: 10px; border-top: 1px solid var(--rule); margin-top: 10px; }
 .fig figcaption span { color: var(--on-paper); }
 .cs-next { padding: 32px 0; }
+.cs-next-row { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: space-between; align-items: baseline; }
+.cs-next-link { display: inline-flex; flex-direction: column; align-items: flex-end; gap: 4px; text-decoration: none; color: inherit; }
+.cs-next-title { font-family: var(--display); font-size: clamp(1.5rem, 4vw, 2.5rem); text-transform: uppercase; line-height: 1; }
+.cs-next-link:hover .cs-next-title, .cs-next-link:focus-visible .cs-next-title { color: var(--red-text); }
 
 /* Footer */
 .site-footer { border-top: 1px solid var(--ink-2); padding: 56px 0 40px; }

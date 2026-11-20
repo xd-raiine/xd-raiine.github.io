@@ -5,7 +5,7 @@ type: Brand identity
 role: Lead designer, art director
 cover: covers/sober-attraction.png
 summary: A brand for a new app supporting people in addiction recovery. Warm and human, built around love and connection instead of labels.
-headNote: case study 1 of 5. the other four are coming
+headNote: start here. tabu is still coming
 facts:
   - label: Role
     value: "Lead designer and art director"
